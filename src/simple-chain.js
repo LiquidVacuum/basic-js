@@ -15,9 +15,9 @@ export default {
     return this;
   },
   removeLink(position) {
-    if (!this.chain[position]) {
+    if (!this.chain[position - 1]) {
       this.chain = [];
-      throw new Error('Invalid remove argument');
+      throw new Error('You can\'t remove incorrect link!');
     }
     this.chain.splice(position - 1, 1);
     return this;
