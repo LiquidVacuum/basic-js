@@ -33,6 +33,7 @@ export default class VigenereCipheringMachine {
   }
   
   encrypt(message, key) {
+    if (!message || !key) throw new Error('Incorrect arguments!');
     message = message.toUpperCase();
     key = key.toUpperCase();
 
@@ -51,6 +52,7 @@ export default class VigenereCipheringMachine {
   }
 
   decrypt(message, key) {
+    if (!message || !key) throw new Error('Incorrect arguments!');
     key = key.toUpperCase();
 
     let result = '';
