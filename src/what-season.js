@@ -33,5 +33,5 @@ export default function getSeason(date) {
         return 'autumn';
     }
   }
-  throw new Error('Invalid argument');
+  throw new Error('Invalid date!');
 }
