@@ -23,7 +23,26 @@ import { NotImplementedError } from '../extensions/index.js';
  *  [1, 1, 1]
  * ]
  */
-export default function minesweeper (/* matrix */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+export default function minesweeper (matrix) {
+  const output = matrix.slice().map((elem) => elem.slice().fill(0));
+
+  function markPerimeter(x, y) {
+    for (let k = x - 1; k <= x + 1; k++) {
+      for (let m = y - 1; m <= y + 1; m++) {
+        if (k !== x || m !== y) {
+          if (output[k] !== undefined && output[k][m] !== undefined) {
+            output[k][m] += 1;
+          }
+        }
+      }
+    }
+  }
+
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      if (matrix[i][j]) markPerimeter(i, j);
+    }
+  }
+
+  return output;
 }
